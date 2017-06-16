@@ -76,7 +76,7 @@ public class WorkExperienceServlet extends HttpServlet {
 			 nextURL="/Skill_1.jsp";
 		 }
 		
-         session.setAttribute("message3", experience);
+         session.setAttribute("message4", experience);
     	
     	 getServletContext().getRequestDispatcher(nextURL).forward(request, response);
     	 //figure out about next url so as to go to the next url.
