@@ -7,10 +7,12 @@
 <title>Educational experience</title>
 </head>
 <body>
-<form action = "" method = "post">
-University:<input type = "text" name = "Education" >
-what field:<input type = "text" name = "Education" >
-Graduated year:<input type = "text" name = "Education" >
+<form action = "ResumeServlet" method = "post">
+University:<input type = "text" name = "Education1" >
+what field:<input type = "text" name = "Education2" >
+Graduated year:<input type = "text" name = "Education3" >
+<p>do you want to ccontinue?</p>
+ <!--radio-->
 <input type = "Submit" value = "Submit">
 </form>
 </body>

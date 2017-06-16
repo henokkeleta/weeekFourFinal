@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-</form>
+
 <p>Enter your Work Experience Now</p>
 <form action = "WorkExperience.jsp" method = "post">
 Job 1:<input type = "text" name = "Job1" >

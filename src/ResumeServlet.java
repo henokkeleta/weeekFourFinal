@@ -43,7 +43,7 @@ public class ResumeServlet extends HttpServlet {
 	     Statement statement = null;
 	     PreparedStatement preparedStatement = null;
 	     ResultSet resultSet = null;
-	   //  String lastname;
+	  
 	     HttpSession session = request.getSession();
 	     String nextURL = "/NameEmail.jsp";
 	     

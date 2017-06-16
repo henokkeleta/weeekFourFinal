@@ -7,13 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action = "NameEmailServlet" method = "post">
-Full Name:<input type = "text" name = "FullName" >
-Email:<input type = "text" name = "Email" >
-<input type = "Submit" value = "Submit">
-
-</form>
-
+<!-- In this jsp i need to bring all sessions and display the output from each webform -->
+<h2>${message1}</h2>
+<h2>${message2}</h2>
+<h2>${message3}</h2>
+<h2>${message4}</h2>
+<h2>${message5}</h2>
 
 </body>
 </html>
