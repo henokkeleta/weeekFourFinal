@@ -50,12 +50,17 @@ public class WorkExperienceServlet extends HttpServlet {
 	     HttpSession session = request.getSession();
 	     String nextURL = "/Skill_1.jsp";
 	     String experience="";
+	     String fullName0= (String) session.getAttribute("FullName");
+	     String emil0=(String) session.getAttribute("Email");
+		// String workExperience0=(String) session.getAttribute("WorkExperience");
+		 String education0=(String) session.getAttribute("Education");
+		 String skill0=(String) session.getAttribute("Skill");
 	 try{ 
 	    	 
 	     
 		 Class.forName("com.mysql.jdbc.Driver");
 		 connect = DriverManager.getConnection("jdbc:mysql://localhost/ResumeMembers?user=root&password=password");
-		 preparedStatement = connect.prepareStatement("insert into Resume(WorkExperience)values(?)");
+		 preparedStatement = connect.prepareStatement("insert into Resume(PersonId, FullName,Email,Education,WorkExperience,Skill)values(default, ?, ?,?,?,?)");
 		 String job = request.getParameter("Job");
 		 String Campany = request.getParameter("Company");
 		 String yearStart=request.getParameter("StartYear");
@@ -75,8 +80,12 @@ public class WorkExperienceServlet extends HttpServlet {
 		 else{ 
 			 nextURL="/Skill_1.jsp";
 		 }
-		
-		 preparedStatement.setString(1, experience);
+		 preparedStatement.setString(1, fullName0);
+		 preparedStatement.setString(2,emil0);
+		 preparedStatement.setString(3, education0);
+         preparedStatement.setString(4, experience);
+         preparedStatement.setString(5, skill0);
+		// preparedStatement.setString(1, experience);
 		 preparedStatement.executeUpdate();
          session.setAttribute("message3", experience);
     	

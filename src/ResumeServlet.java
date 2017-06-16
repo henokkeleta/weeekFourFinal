@@ -49,9 +49,9 @@ public class ResumeServlet extends HttpServlet {
 	     
 		try{ 
 
-			 Class.forName("com.mysql.jdbc.Driver");
-			 connect = DriverManager.getConnection("jdbc:mysql://localhost/ResumeMembers?user=root&password=password");
-			 preparedStatement = connect.prepareStatement("insert into Resume(PersonId, FullName,Email,Education,WorkExperience,Skill)values(default, ?, ?,?,?,?)");
+			// Class.forName("com.mysql.jdbc.Driver");
+			 //connect = DriverManager.getConnection("jdbc:mysql://localhost/ResumeMembers?user=root&password=password");
+			// preparedStatement = connect.prepareStatement("insert into Resume(PersonId, FullName,Email,Education,WorkExperience,Skill)values(default, ?, ?,?,?,?)");
 			//the next steps should be to mutate my previous resume class..it should fit in or 
 			   // preparedStatement.setString(1, "PersonID");
 			 

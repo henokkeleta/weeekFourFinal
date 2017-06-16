@@ -50,12 +50,17 @@ public class SkillServlet extends HttpServlet {
 	     HttpSession session = request.getSession();
 	     String nextURL = "/OutPut_1.jsp";
 	     String Skill="";
+	     String fullName0= (String) session.getAttribute("FullName");
+	     String emil0=(String) session.getAttribute("Email");
+	    
+		  String workExperience0=(String) session.getAttribute("WorkExperience");
+		 String education0=(String) session.getAttribute("Education");
 	 try{ 
 	    	 
 	     
 		 Class.forName("com.mysql.jdbc.Driver");
 		 connect = DriverManager.getConnection("jdbc:mysql://localhost/ResumeMembers?user=root&password=password");
-		 preparedStatement = connect.prepareStatement("insert into Resume(Skill)values(?)");
+		 preparedStatement = connect.prepareStatement("insert into Resume(PersonId, FullName,Email,Education,WorkExperience,Skill)values(default, ?, ?,?,?,?)");
 		 String Sk1 = request.getParameter("Skill1");
 		 String pr1 = request.getParameter("Proficiencey1");
 		 String Sk2 = request.getParameter("Skill2");
@@ -76,15 +81,20 @@ public class SkillServlet extends HttpServlet {
 		 String pr9 = request.getParameter("Proficiencey9");
 		 String Sk10 = request.getParameter("Skill10");
 		 String pr10= request.getParameter("Proficiencey10");
+		 Skill=Sk1;
 		 Skill=Sk1+","+"profficency"+" "+pr1+"\n"+Sk2+","+"profficency"+" "+pr2+"\n"+Sk3+","+"profficency"+" "+pr3+"\n"+Sk4+","+"profficency"+" "+pr4+"\n"+
 				 Sk5+","+"profficency"+" "+pr5+"\n"+Sk6+","+"profficency"+" "+pr6+"\n"+Sk7+","+"profficency"+" "+pr7+"\n"+Sk8+","+"profficency"+" "+pr8+"\n"+
 				 Sk9+","+"profficency"+" "+pr9+"\n"+Sk10+","+"profficency"+" "+pr10;
 		
 		// String nextURL="/OutPut_1.jsp";
 		
-		 
-		
-		 preparedStatement.setString(1, Skill);
+		 preparedStatement.setString(1, fullName0);
+		 preparedStatement.setString(2,emil0);
+		 preparedStatement.setString(3, education0);
+         preparedStatement.setString(4, workExperience0);
+         preparedStatement.setString(5, Skill);
+		//
+		// preparedStatement.setString(1, Skill);
 		 preparedStatement.executeUpdate();
          session.setAttribute("message5", Skill);
     	

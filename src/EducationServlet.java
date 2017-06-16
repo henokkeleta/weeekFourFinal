@@ -43,15 +43,16 @@ public class EducationServlet extends HttpServlet {
 	     HttpSession session = request.getSession();
 	     String nextURL = "/WorkExperience_1.jsp";
 	     String education="";
-	     String education0="";
-		  String workExperience0="";
-		  String skill0="";
+	     String fullName0= (String) session.getAttribute("FullName");
+	     String emil0=(String) session.getAttribute("Email");
+		 String workExperience0=(String) session.getAttribute("WorkExperience");
+		  String skill0=(String) session.getAttribute("Skill");
 	 try{ 
 	    	 
 	     
 		 Class.forName("com.mysql.jdbc.Driver");
 		 connect = DriverManager.getConnection("jdbc:mysql://localhost/ResumeMembers?user=root&password=password");
-		 preparedStatement = connect.prepareStatement("insert into Resume(Education)values(?)");
+		 preparedStatement = connect.prepareStatement("insert into Resume(PersonId, FullName,Email,Education,WorkExperience,Skill)values(default, ?, ?,?,?,?)");
 		 String university = request.getParameter("University");
 		 String major = request.getParameter("Major");
 		 String year=request.getParameter("GrauateYear");
@@ -68,10 +69,11 @@ public class EducationServlet extends HttpServlet {
 			 
 		 }
 		
-		 preparedStatement.setString(1, education);
-		// preparedStatement.setString(4, education0);
-        // preparedStatement.setString(5, workExperience0);
-         //preparedStatement.setString(6, skill0);
+		 preparedStatement.setString(1, fullName0);
+		 preparedStatement.setString(2,emil0);
+		 preparedStatement.setString(3, education);
+        preparedStatement.setString(4, workExperience0);
+        preparedStatement.setString(5, skill0);
 		 preparedStatement.executeUpdate();
          session.setAttribute("message3", education);
     	
@@ -103,6 +105,12 @@ public class EducationServlet extends HttpServlet {
    }
 }
 
+	}
+
+
+	private String getsession(String string) {
+		
+		return null;
 	}
 		
 		

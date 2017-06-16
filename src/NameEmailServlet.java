@@ -48,7 +48,7 @@ public class NameEmailServlet extends HttpServlet {
 	    	 
 	     
 		 Class.forName("com.mysql.jdbc.Driver");
-		 connect = DriverManager.getConnection("jdbc:mysql://localhost/ResumeMembers?user=root&password=password");
+		connect = DriverManager.getConnection("jdbc:mysql://localhost/ResumeMembers?user=root&password=password");
 		 preparedStatement = connect.prepareStatement("insert into Resume(PersonId, FullName,Email,Education,WorkExperience,Skill)values(default, ?, ?,?,?,?)");
 		 String fullName = request.getParameter("FullName");
 		 String email = request.getParameter("Email");
