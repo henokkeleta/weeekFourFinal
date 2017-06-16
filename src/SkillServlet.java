@@ -48,7 +48,7 @@ public class SkillServlet extends HttpServlet {
 	     ResultSet resultSet = null;
 		  
 	     HttpSession session = request.getSession();
-	     String nextURL = "/OutPut_1.jsp";
+	     String nextURL = "/OutPut.jsp";
 	     String Skill="";
 	     String fullName0= (String) session.getAttribute("FullName");
 	     String emil0=(String) session.getAttribute("Email");

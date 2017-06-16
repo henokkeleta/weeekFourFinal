@@ -41,26 +41,21 @@ public class WorkExperienceServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 Connection connect = null;
-	     Statement statement = null;
-	     PreparedStatement preparedStatement = null;
-		 //doGet(request, response);
-	     ResultSet resultSet = null;
+		
 		  
 	     HttpSession session = request.getSession();
 	     String nextURL = "/Skill_1.jsp";
 	     String experience="";
 	     String fullName0= (String) session.getAttribute("FullName");
 	     String emil0=(String) session.getAttribute("Email");
-		// String workExperience0=(String) session.getAttribute("WorkExperience");
+		
 		 String education0=(String) session.getAttribute("Education");
 		 String skill0=(String) session.getAttribute("Skill");
 	 try{ 
 	    	 
 	     
 		 Class.forName("com.mysql.jdbc.Driver");
-		 connect = DriverManager.getConnection("jdbc:mysql://localhost/ResumeMembers?user=root&password=password");
-		 preparedStatement = connect.prepareStatement("insert into Resume(PersonId, FullName,Email,Education,WorkExperience,Skill)values(default, ?, ?,?,?,?)");
+		
 		 String job = request.getParameter("Job");
 		 String Campany = request.getParameter("Company");
 		 String yearStart=request.getParameter("StartYear");
@@ -70,23 +65,17 @@ public class WorkExperienceServlet extends HttpServlet {
 		 String experience1=job+","+Campany+","+"/n"+yearStart+", "+till+"/n"+"Duty:"+duty1+"/n"+duty2;
 		 
 		 String more=request.getParameter("more");
-		// String nextURL="/WorkExperience_1.jsp";
-		 // experience= experience+","+major+","+year;
+		
 		 if(more.equalsIgnoreCase("yes"))
 		 { 
 		    nextURL= "/WorkExperience_1.jsp";
 		    experience= experience+experience1;
 		 }
 		 else{ 
+			 experience=experience1;
 			 nextURL="/Skill_1.jsp";
 		 }
-		 preparedStatement.setString(1, fullName0);
-		 preparedStatement.setString(2,emil0);
-		 preparedStatement.setString(3, education0);
-         preparedStatement.setString(4, experience);
-         preparedStatement.setString(5, skill0);
-		// preparedStatement.setString(1, experience);
-		 preparedStatement.executeUpdate();
+		
          session.setAttribute("message3", experience);
     	
     	 getServletContext().getRequestDispatcher(nextURL).forward(request, response);
@@ -99,23 +88,7 @@ public class WorkExperienceServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-       } finally {
-       	try {
-               if (resultSet != null) {
-                   resultSet.close();
-               }
-
-               if (statement != null) {
-                   statement.close();
-               }
-
-               if (connect != null) {
-                   connect.close();
-               }
-           } catch (Exception e) {
-
-   }
-}
+       } 
 
 	}
 		

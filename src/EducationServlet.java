@@ -34,25 +34,15 @@ public class EducationServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Connection connect = null;
-	     Statement statement = null;
-	     PreparedStatement preparedStatement = null;
-		 //doGet(request, response);
-	     ResultSet resultSet = null;
+		
 		  
 	     HttpSession session = request.getSession();
 	     String nextURL = "/WorkExperience_1.jsp";
 	     String education="";
-	     String fullName0= (String) session.getAttribute("FullName");
-	     String emil0=(String) session.getAttribute("Email");
-		 String workExperience0=(String) session.getAttribute("WorkExperience");
-		  String skill0=(String) session.getAttribute("Skill");
+	    
 	 try{ 
 	    	 
-	     
-		 Class.forName("com.mysql.jdbc.Driver");
-		 connect = DriverManager.getConnection("jdbc:mysql://localhost/ResumeMembers?user=root&password=password");
-		 preparedStatement = connect.prepareStatement("insert into Resume(PersonId, FullName,Email,Education,WorkExperience,Skill)values(default, ?, ?,?,?,?)");
+	    
 		 String university = request.getParameter("University");
 		 String major = request.getParameter("Major");
 		 String year=request.getParameter("GrauateYear");
@@ -62,19 +52,14 @@ public class EducationServlet extends HttpServlet {
 		 if(more.equalsIgnoreCase("yes"))
 		 { 
 		    nextURL= "/Education_1.jsp";
-		    education= education+"/n "+education1;
+		    education= education+"  "+education1;
 		 }
 		 else{ 
 			 nextURL="/WorkExperience_1.jsp";
-			 
+			 education=education1;
 		 }
 		
-		 preparedStatement.setString(1, fullName0);
-		 preparedStatement.setString(2,emil0);
-		 preparedStatement.setString(3, education);
-        preparedStatement.setString(4, workExperience0);
-        preparedStatement.setString(5, skill0);
-		 preparedStatement.executeUpdate();
+		
          session.setAttribute("message3", education);
     	
     	 getServletContext().getRequestDispatcher(nextURL).forward(request, response);
@@ -87,31 +72,11 @@ public class EducationServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-       } finally {
-       	try {
-               if (resultSet != null) {
-                   resultSet.close();
-               }
-
-               if (statement != null) {
-                   statement.close();
-               }
-
-               if (connect != null) {
-                   connect.close();
-               }
-           } catch (Exception e) {
-
-   }
-}
-
+       } 
 	}
 
 
-	private String getsession(String string) {
-		
-		return null;
-	}
+	
 		
 		
 		
